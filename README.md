@@ -1,6 +1,7 @@
 A small collection of Image Based Denoising algorithms
 
 ## Algorithms:
+- [x] Gaussian blur
 - [ ] Bilateral filter
 
 ## Gaussian Blur
