@@ -67,7 +67,7 @@ def convolve2D(image, kernel, padding=0, strides=1):
 def main():
     args = parser.parse_args()
     img = np.array(Image.open(f'{os.getcwd()}{args.file}'))
-    kernel = gaussian_kernel(size=5, sigma = 2)
+    kernel = gaussian_kernel(size=10, sigma = 2)
     kernel = np.repeat(kernel[:, :, np.newaxis], 3, axis = 2)
     img_out = convolve2D(img , kernel = kernel).astype(np.uint8)
     if args.show:
@@ -76,7 +76,7 @@ def main():
     
     if args.save:
         img_out = Image.fromarray(img_out)
-        save_path = f'{os.getcwd()}/gaussian-blur/results'
+        save_path = f'{os.getcwd()}/results/gaussian-blur'
         if not os.path.exists(save_path):
             os.makedirs(save_path)
         img_out.save(f'{save_path}/{args.save_name}')
