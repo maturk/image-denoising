@@ -1,0 +1,1 @@
+The bilateral filter is technique to smooth images while preserving edges. Its formulation is simple: each pixel is replaced by an average of its neighbors.
