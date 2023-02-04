@@ -1,3 +1,8 @@
+'''
+Gaussian blur
+by: Matias
+'''
+
 import math
 import os
 import argparse
@@ -9,8 +14,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--save', type=bool, default=True, help='whether or not to save output files')
 parser.add_argument('--show', type=bool, default=False, help='whether to show input/output image or not')
 parser.add_argument('--file', type=str, default='/assets/cbox.png', help='input image file')
-parser.add_argument('--save_name', type=str, default='out.png', help='input image file')
-
+parser.add_argument('--save_name', type=str, default='out', help='input image file')
+parser.add_argument('--size', type=int, default=5, help='kernel size')
+parser.add_argument('--sigma', type=int, default=1, help='standard deviation for gaussian kernel')
 
 # Gaussian Kernel 
 def gaussian_kernel(size = 3, sigma = 1):
@@ -38,9 +44,8 @@ def convolve2D(image, kernel, padding=0, strides=1):
 
     # Apply Equal Padding to All Sides
     if padding != 0:
-        imagePadded = np.zeros((image.shape[0] + padding*2, image.shape[1] + padding*2))
-        imagePadded[int(padding):int(-1 * padding), int(padding):int(-1 * padding)] = image
-        print(imagePadded)
+        imagePadded = np.zeros((image.shape[0] + padding*2, image.shape[1] + padding*2, 3))
+        imagePadded[int(padding):int(-1 * padding), int(padding):int(-1 * padding),:] = image
     else:
         imagePadded = image
     
@@ -67,9 +72,10 @@ def convolve2D(image, kernel, padding=0, strides=1):
 def main():
     args = parser.parse_args()
     img = np.array(Image.open(f'{os.getcwd()}{args.file}'))
-    kernel = gaussian_kernel(size=10, sigma = 2)
+    kernel = gaussian_kernel(size=args.size, sigma = args.sigma)
     kernel = np.repeat(kernel[:, :, np.newaxis], 3, axis = 2)
-    img_out = convolve2D(img , kernel = kernel).astype(np.uint8)
+    img_out = convolve2D(img , kernel = kernel, padding = math.floor((kernel.shape[0]) /2) ).astype(np.uint8)
+    
     if args.show:
         Image.open(f'{os.getcwd()}{args.file}').show()
         Image.fromarray(img_out).show()
@@ -79,7 +85,7 @@ def main():
         save_path = f'{os.getcwd()}/results/gaussian-blur'
         if not os.path.exists(save_path):
             os.makedirs(save_path)
-        img_out.save(f'{save_path}/{args.save_name}')
+        img_out.save(f'{save_path}/{args.save_name}_{args.size}_{args.sigma}.png')
 
 
 if __name__ == "__main__":
