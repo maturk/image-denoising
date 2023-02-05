@@ -1,8 +1,9 @@
-A small collection of Image Based Denoising algorithms written in Python
+A small collection of Image Based Denoising algorithms written in Python. All algorithms are hard coded, I did not use any external library besides numpy and Pillow (see requirements.txt).
 
 ## Algorithms:
 - [x] Gaussian blur
-- [ ] Bilateral filter
+- [x] Bilateral filter
+    - [ ] TODO: optimize bilateral 
 
 ## Download
 ```
