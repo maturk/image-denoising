@@ -3,7 +3,10 @@ A small collection of Image Based Denoising algorithms written in Python. Small 
 ## Algorithms:
 - [x] Gaussian blur
 - [x] Bilateral filter
-    - [ ] TODO: optimize bilateral 
+    - [ ] TODO: optimize bilateral
+- [ ] Non-local means filter 
+- [ ] Neural network based denoising 
+    - [ ] Intel® Open Image Denoise  
 
 ## Download
 ```
