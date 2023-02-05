@@ -17,7 +17,7 @@ Gaussian blur is one of the simplest denoising algorithms and it amounts to esti
 at each pixel position a local average of intensities and corresponds to low-pass filtering.
 
 ```
-python ./gaussian-blur/gaussian-blur.py --size 1 --sigma 1
+python ./gaussian-blur/gaussian-blur.py --size 1 --sigma 1 --show True --save True
 ```
 ### Bilateral Filter
 The bilateral filter is technique to smooth images while preserving edges.
