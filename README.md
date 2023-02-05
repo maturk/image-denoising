@@ -1,4 +1,4 @@
-A small collection of Image Based Denoising algorithms written in Python. All algorithms are hard coded, I did not use any external library besides numpy and Pillow (see requirements.txt).
+A small collection of Image Based Denoising algorithms written in Python. Small writeup and demo images can be seen here: [link to demo.](https://maturk.github.io/page/2023/02/03/image_denoising.html) All algorithms are hard coded. Requirements are only numpy and Pillow (see requirements.txt).
 
 ## Algorithms:
 - [x] Gaussian blur
